@@ -1,0 +1,25 @@
+version: '3'
+# aka containers
+services:
+    # just a name of container
+    web: 
+        stdin_open: true
+        build: 
+            # where we want our files to be pulled from
+            context: .
+            dockerfile: Dockerfile.dev
+        ports:
+            - "3000:3000"
+        volumes:
+            # bookmark
+            - /app/node_modules
+            # mapping curent folder to app folder in the container
+            - .:/app 
+    tests:
+        build: 
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /app/node_modules
+            - .:/app 
+        command: ["npm","run", "test"]
