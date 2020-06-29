@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+services: 
+    - docker
+    
+# before our test run
+before_install:
+    - docker build -t nativ/docker-react -f Dockerfile.dev .
+
+    script:
+        - docker run -e CI=true nativ/docker-react npm run test
