@@ -12,5 +12,6 @@ RUN npm run build
 
 # Second phase. the dest folder is taken the hub.docker.com page og nginx
 FROM nginx
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # The first phase image is getting overriden / dropped. So we get a relatively small image with just our app and nginx
