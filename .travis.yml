@@ -9,3 +9,19 @@ before_install:
 
 script:
     - docker run -e CI=true nativ/docker-react npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-1"
+    # App name in beanstalk
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-west-1-663710963089"
+    # The folder name is the same as the app and being creaed just after deployment
+    bucket_path: "docker-react"
+    # deploy only when there's a push to master
+    on: 
+       branch: master
+access_key_id: $access_key_id
+secret_access_key:
+    secret: "$secret_key_id"
