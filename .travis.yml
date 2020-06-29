@@ -22,6 +22,5 @@ deploy:
     # deploy only when there's a push to master
     on: 
        branch: master
-access_key_id: "$access_key_id"
-secret_access_key:
-    secret: "$secret_key_id"
+access_key_id: $access_key_id
+secret_access_key: $secret_key_id
